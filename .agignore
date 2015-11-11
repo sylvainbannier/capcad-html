@@ -1,5 +1,4 @@
 bower_components
-gulp
 node_modules
 .agignore
 bower.json
@@ -7,11 +6,7 @@ bower.json
 .editorconfig
 .eslintrc
 .gitignore
-gulpfile.js
-karma.conf.js
 package.json
-protractor.conf.js
-README.md
 .vimrc
 .yo-rc.json
-
+dist
