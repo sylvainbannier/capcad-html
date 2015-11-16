@@ -7,7 +7,7 @@ set autoindent
 set smartindent
 
 " ignore directories in vimgrep ack CtrlP etc.
-set wildignore+=bower_components,node_modules,dist,.git
+set wildignore+=bower_components,node_modules,dist,.git,coverage
 
-let g:NERDTreeIgnore=['bower_components', 'node_modules', 'dist', '.git']
+let g:NERDTreeIgnore=['bower_components', 'node_modules', 'dist', '.git', 'coverage']
 
