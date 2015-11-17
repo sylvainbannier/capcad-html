@@ -1,7 +1,10 @@
 {
   "globals": {
     "browser": false,
+    "describe": false,
+    "it": false,
     "element": false,
+    "require": false,
     "by": false,
     "$": false,
     "$$": false
