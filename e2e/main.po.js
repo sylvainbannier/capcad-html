@@ -6,10 +6,12 @@
 'use strict';
 
 var MainPage = function() {
-  this.jumbEl = element(by.css('.jumbotron'));
-  this.h1El = this.jumbEl.element(by.css('h1'));
-  this.imgEl = this.jumbEl.element(by.css('img'));
-  this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in main.awesomeThings'));
+  this.add = (idea) => {
+    element(by.css('input')).sendKeys(idea);
+    element(by.css('button.add')).click();
+
+  }
+  this.list = element.all(by.repeater('idea in main.ideas'));
 };
 
 module.exports = new MainPage();

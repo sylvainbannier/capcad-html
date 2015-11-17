@@ -6,6 +6,7 @@ export class MainController {
     this.classAnimation = '';
     this.creationDate = 1447260502108;
     this.toastr = toastr;
+    this.ideas = ['idea'];
 
     this.activate($timeout, webDevTec);
   }
