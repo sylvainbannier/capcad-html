@@ -14,7 +14,14 @@ import remoteActionMiddleware from './remote_actions_middelware';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 const createStoreWithMiddleware = applyMiddleware(remoteActionMiddleware(socket))(createStore);
-const store = createStoreWithMiddleware(reducer);
+let store;
+if (process.env.NODE_ENV !== 'production') {
+  store = createStoreWithMiddleware(reducer, window.devToolsExtension && window.devToolsExtension());
+}
+else {
+  store = createStoreWithMiddleware(reducer);
+}
+
 socket.on('test', (data) => {
   console.log(data);
 })
