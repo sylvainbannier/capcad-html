@@ -1,25 +1,69 @@
 import { List, Map, fromJS } from 'immutable';
 import {expect} from 'chai';
-import {getReducer} from '../src/reducer';
-const reducer = getReducer({
-  generate: () => "random_id"
-});
+import reducer from '../src/reducer';
 
 describe("reduce", () => {
-  describe("ADD_IDEA", () => {
-    it('saves added idea to history', () => {
-      const initial_state = fromJS({
-        events: {}
-      });
-      const action = {type: 'ADD_IDEA', entry: 'my new idea'};
-      const nextState = reducer(initial_state, action);
-
-      expect(nextState).to.equal(fromJS({
-        events: {
-          random_id: fromJS(action)
-        }
-      }));
+  it("handles SET_STATE", () => {
+    const initial_state = Map();
+    const action = {
+      type: 'SET_STATE',
+      state: Map({
+        vote: Map({
+          pair: List.of('Trinspotting','28 Days Later'),
+          tally: Map({trainspotting: 1})
+        })
+      })
+    }
+    const nextState = reducer(initial_state, action);
+    expect(nextState).to.equal(
+      Map({
+      vote: Map({
+        pair: List.of('Trinspotting','28 Days Later'),
+        tally: Map({trainspotting: 1})
+      })
     })
+    )
+  });
+
+  it('handles SET_STATE with plain JS payload', () => {
+    const initialState = Map();
+    const action = {
+      type: 'SET_STATE',
+      state: {
+        vote: {
+          pair: ['Trainspotting', '28 Days Later'],
+          tally: {Trainspotting: 1}
+        }
+      }
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.equal(fromJS({
+      vote: {
+        pair: ['Trainspotting', '28 Days Later'],
+        tally: {Trainspotting: 1}
+      }
+    }));
+  });
+
+  it('handles SET_STATE without initial state', () => {
+    const action = {
+      type: 'SET_STATE',
+      state: {
+        vote: {
+          pair: ['Trainspotting', '28 Days Later'],
+          tally: {Trainspotting: 1}
+        }
+      }
+    };
+    const nextState = reducer(undefined, action);
+
+    expect(nextState).to.equal(fromJS({
+      vote: {
+        pair: ['Trainspotting', '28 Days Later'],
+        tally: {Trainspotting: 1}
+      }
+    }));
   });
 
   it('handles VOTE by setting hasVoted', () => {
