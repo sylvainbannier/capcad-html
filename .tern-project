@@ -13,6 +13,6 @@
     "es_modules": {},
     "node": {},
     "doc_comment": {},
-    "webpack": {}
+    "webpack":  {"configPath": "./webpack.config.js"}
   }
 }
