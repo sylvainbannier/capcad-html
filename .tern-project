@@ -10,9 +10,9 @@
     "test/**/*"
   ],
   "plugins": {
-    "doc_comment": {},
-    "node": {},
     "es_modules": {},
+    "node": {},
+    "doc_comment": {},
     "webpack": {}
   }
 }
