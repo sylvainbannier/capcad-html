@@ -1,7 +1,5 @@
 import {Map, List} from 'immutable';
-import shortid from 'shortid';
-
-console.log(shortid.generate());
+import {generate} from 'shortid';
 
 function setState(state, newState) {
   return state.merge(newState);
@@ -26,11 +24,18 @@ function resetVote(state) {
   }
 }
 
-function getAddIdea(randomIdGenerator) {
-  return function addIdea(state, entry) {
-    console.log(randomIdGenerator.generate());
-    return state;
-  }
+const getAddIdea = (randomIdGenerator) => (state, entry) => {
+  const newState = state.updateIn(
+    [ 'events' ] ,
+    arr => arr.push(
+      Map({
+      type: 'ADD_IDEA',
+      entry: entry,
+      id: randomIdGenerator()
+    })
+    )
+  );
+  return newState;
 }
 
 
@@ -41,7 +46,7 @@ function reducer(state = Map(), action) {
   case 'VOTE':
     return vote(state, action.entry);
   case 'ADD_IDEA':
-    return getAddIdea(shortid)(state, action.entry);
+    return getAddIdea(generate)(state, action.entry);
   }
   throw new Error("UNKNOWN_ACTION")
   return state;
@@ -62,4 +67,4 @@ const getReducer = (randomIdGenerator) => {
   }
 }
 export {getReducer};
-export default getReducer(shortid)
+export default getReducer(generate)

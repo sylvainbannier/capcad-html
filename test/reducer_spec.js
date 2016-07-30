@@ -1,27 +1,9 @@
 import { List, Map, fromJS } from 'immutable';
 import {expect} from 'chai';
 import {getReducer} from '../src/reducer';
-const reducer = getReducer({
-  generate: () => "random_id"
-});
+const reducer = getReducer(() => "random_id");
 
 describe("reduce", () => {
-  describe("ADD_IDEA", () => {
-    it('saves added idea to history', () => {
-      const initial_state = fromJS({
-        events: {}
-      });
-      const action = {type: 'ADD_IDEA', entry: 'my new idea'};
-      const nextState = reducer(initial_state, action);
-
-      expect(nextState).to.equal(fromJS({
-        events: {
-          random_id: fromJS(action)
-        }
-      }));
-    })
-  });
-
   it('handles VOTE by setting hasVoted', () => {
     const state = fromJS({
       vote: {
