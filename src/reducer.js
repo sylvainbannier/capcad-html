@@ -14,6 +14,13 @@ function vote(state, entry) {
   }
 }
 
+function initState(state = Map()) {
+  if(!state.has('events')) {
+    return state.set('events',List());
+  }
+  return state;
+}
+
 function resetVote(state) {
   const hasVoted = state.get('hasVoted');
   const currentPair = state.getIn(['vote', 'pair'], List());
@@ -25,6 +32,7 @@ function resetVote(state) {
 }
 
 const getAddIdea = (randomIdGenerator) => (state, entry) => {
+  console.log(state.toJS());
   const newState = state.updateIn( [ 'events' ] , arr => arr.push(
     Map({
     type: 'ADD_IDEA',
@@ -41,7 +49,7 @@ function reducer(state = Map(), action) {
   case 'VOTE':
     return vote(state, action.entry);
   case 'ADD_IDEA':
-    return getAddIdea(generate)(state, action.entry);
+    return getAddIdea(generate)(initState(state), action.entry);
   }
   throw new Error("UNKNOWN_ACTION")
   return state;
@@ -55,9 +63,9 @@ const getReducer = (randomIdGenerator) => {
     case 'VOTE':
       return vote(state, action.entry);
     case 'ADD_IDEA':
-      return getAddIdea(randomIdGenerator)(state, action.entry);
+      return getAddIdea(randomIdGenerator)(initState(state), action.entry);
     }
-    throw new Error("UNKNOWN_ACTION")
+    // throw new Error("UNKNOWN_ACTION")
     return state;
   }
 }

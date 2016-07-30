@@ -13,21 +13,23 @@ import remoteActionMiddleware from './remote_actions_middelware';
 
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
-const createStoreWithMiddleware = applyMiddleware(remoteActionMiddleware(socket))(createStore);
+// const createStoreWithMiddleware = applyMiddleware(remoteActionMiddleware(socket))(createStore);
 let store;
 if (process.env.NODE_ENV !== 'production') {
-  store = createStoreWithMiddleware(reducer, window.devToolsExtension && window.devToolsExtension());
+  // store = createStoreWithMiddleware(reducer, window.devToolsExtension && window.devToolsExtension());
+  store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
 }
 else {
-  store = createStoreWithMiddleware(reducer);
+  // store = createStoreWithMiddleware(reducer);
+  store = createStore(reducer);
 }
 
-socket.on('test', (data) => {
-  console.log(data);
-})
-socket.on('state', state =>
-  store.dispatch(setState(state))
-);
+// socket.on('test', (data) => {
+//   console.log(data);
+// })
+// socket.on('state', state =>
+//   store.dispatch(setState(state))
+// );
 
 const routes = <Route component={App}>
   <Route path="/results" component={ResultsContainer}/>
