@@ -19,3 +19,10 @@ export function next(entry) {
     type: 'NEXT'
   }
 }
+
+export function addIdea(entry) {
+  return {
+    type: 'ADD_IDEA',
+    entry
+  }
+}

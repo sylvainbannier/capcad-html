@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {connect} from 'react-redux';
 import Winner from './Winner';
 import Vote from './Vote';
+import AddIdea from './AddIdea';
 import * as actionCreators from '../action_creators';
 
 const Voting = React.createClass({
@@ -11,6 +12,7 @@ const Voting = React.createClass({
     // var { winner, ...other } = this.props;
 		return (
       <div className="voting">
+        <AddIdea addIdea={()=>{}}/>
         {
           this.props.winner?
           <Winner ref="winner" winner={this.props.winner}/>:
@@ -23,9 +25,9 @@ const Voting = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    pair: state.getIn([ 'vote', 'pair' ]),
-    hasVoted: state.get('hasVoted'),
-    winner: state.get('winner')
+    // pair: state.getIn([ 'vote', 'pair' ]),
+    // hasVoted: state.get('hasVoted'),
+    // winner: state.get('winner')
   }
 }
 

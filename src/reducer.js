@@ -25,19 +25,14 @@ function resetVote(state) {
 }
 
 const getAddIdea = (randomIdGenerator) => (state, entry) => {
-  const newState = state.updateIn(
-    [ 'events' ] ,
-    arr => arr.push(
-      Map({
-      type: 'ADD_IDEA',
-      entry: entry,
-      id: randomIdGenerator()
-    })
-    )
-  );
+  const newState = state.updateIn( [ 'events' ] , arr => arr.push(
+    Map({
+    type: 'ADD_IDEA',
+    entry: entry,
+    id: randomIdGenerator()
+  })));
   return newState;
 }
-
 
 function reducer(state = Map(), action) {
   switch (action.type) {
