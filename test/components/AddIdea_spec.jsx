@@ -13,15 +13,15 @@ import {expect} from 'chai';
 describe('AddIdea', () => {
 
   it('invokes the callback when next button is clicked', () => {
-    let nextInvoked = false;
-    const next = () => nextInvoked = true;
+    let addIdeaInvoked = false;
+    const addIdea = () => addIdeaInvoked = true;
 
     const component = renderIntoDocument(
-      <AddIdea addIdea={next}/>
+      <AddIdea addIdea={addIdea}/>
     );
     Simulate.click(ReactDOM.findDOMNode(component.refs.addIdea));
 
-    expect(nextInvoked).to.equal(true);
+    expect(addIdeaInvoked).to.equal(true);
   });
 
 });
