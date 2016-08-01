@@ -8,20 +8,20 @@ import {
 import {List, Map} from 'immutable';
 import {AddIdea} from '../../src/components/AddIdea';
 import {expect} from 'chai';
+import sinon from 'sinon';
 
 
 describe('AddIdea', () => {
 
   it('invokes the callback when next button is clicked', () => {
-    let addIdeaInvoked = false;
-    const addIdea = () => addIdeaInvoked = true;
+    let addIdeaSpy = sinon.spy();
 
     const component = renderIntoDocument(
-      <AddIdea addIdea={addIdea}/>
+      <AddIdea addIdea={addIdeaSpy}/>
     );
     Simulate.click(ReactDOM.findDOMNode(component.refs.addIdea));
 
-    expect(addIdeaInvoked).to.equal(true);
+    expect(addIdeaSpy.called).to.equal(true);
   });
 
 });
