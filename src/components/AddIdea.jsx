@@ -16,7 +16,7 @@ const AddIdea = React.createClass({
 		return (
       <div className="AddIdea">
         <input type="text" value={this.state.input} onChange={(event) => this.setState({input:event.target.value})}/>
-        <button onClick={this.submit}>OK</button>
+        <button onClick={this.submit} ref="addIdea">OK</button>
       </div>
 		);
 	}
@@ -26,5 +26,6 @@ function mapStateToProps(state) {
   return { }
 }
 
+export {AddIdea};
 export const AddIdeaContainer = connect(mapStateToProps,actionCreators)(AddIdea);
 export default AddIdeaContainer;
