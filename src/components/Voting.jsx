@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Winner from './Winner';
 import Vote from './Vote';
 import AddIdea from './AddIdea';
+import EventList from './EventList';
 import * as actionCreators from '../action_creators';
 
 const Voting = React.createClass({
@@ -13,6 +14,7 @@ const Voting = React.createClass({
 		return (
       <div className="voting">
         <AddIdea addIdea={()=>{}}/>
+        <EventList/>
         {
           this.props.winner?
           <Winner ref="winner" winner={this.props.winner}/>:
