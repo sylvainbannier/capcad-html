@@ -10,18 +10,15 @@ import {AddIdea} from '../../src/components/AddIdea';
 import {expect} from 'chai';
 import sinon from 'sinon';
 
-
 describe('AddIdea', () => {
 
-  it('invokes the callback when next button is clicked', () => {
+  it('invokes the callback when submit button is clicked', () => {
     let addIdeaSpy = sinon.spy();
-
-    const component = renderIntoDocument(
-      <AddIdea addIdea={addIdeaSpy}/>
-    );
+    const component = renderIntoDocument(<AddIdea addIdea={addIdeaSpy}/>);
     Simulate.click(ReactDOM.findDOMNode(component.refs.addIdea));
-
     expect(addIdeaSpy.called).to.equal(true);
   });
 
+  it("has focus when when props.focus is set");
+  it("is cleared when the submit button is clicked");
 });
