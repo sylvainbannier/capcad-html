@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {renderIntoDocument,scryRenderedDOMComponentsWithTag,Simulate} from 'react-addons-test-utils';
-import Voting from '../../src/components/Voting';
+import Home from '../../src/components/Home';
 import Winner from '../../src/components/Winner';
 import Vote from '../../src/components/Vote';
 import {expect} from 'chai';
 import { shallow, mount } from 'enzyme';
 
-describe.skip("Voting", () => {
+describe.skip("Home", () => {
 	it("displays buttons", () => {
 		const component = renderIntoDocument(
-			<Voting pair={["Trainspotting", "28 Days Later"]} />
+			<Home pair={["Trainspotting", "28 Days Later"]} />
 		);
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
@@ -23,7 +23,7 @@ describe.skip("Voting", () => {
     let votedWith;
     const vote = (entry) => votedWith = entry;
     const component = renderIntoDocument(
-      <Voting pair={["Trainspotting", "28 Days Later"]} vote={vote}/>
+      <Home pair={["Trainspotting", "28 Days Later"]} vote={vote}/>
     );
     const button = scryRenderedDOMComponentsWithTag(component, 'button')[0];
     Simulate.click(button);
@@ -32,7 +32,7 @@ describe.skip("Voting", () => {
 
   it("disables buttons when has Voted", () => {
     const component = renderIntoDocument(
-      <Voting pair={["Trainspotting", "28 Days Later"]} hasVoted="Trainspotting"/>
+      <Home pair={["Trainspotting", "28 Days Later"]} hasVoted="Trainspotting"/>
     );
     expect(scryRenderedDOMComponentsWithTag(component, 'button')[0].hasAttribute("disabled")).to.equal(true);
     expect(scryRenderedDOMComponentsWithTag(component, 'button')[1].hasAttribute("disabled")).to.equal(true);
@@ -40,14 +40,14 @@ describe.skip("Voting", () => {
 
   it("adds label to the voted entry", () => {
     const component = renderIntoDocument(
-      <Voting pair={["Trainspotting", "28 Days Later"]} hasVoted="Trainspotting"/>
+      <Home pair={["Trainspotting", "28 Days Later"]} hasVoted="Trainspotting"/>
     );
     expect(scryRenderedDOMComponentsWithTag(component, 'button')[0].textContent).to.contain('Voted');
   });
 
   it("Expects to render winner when there is one", () => {
     const component = renderIntoDocument(
-      <Voting pair={["Trainspotting", "28 Days Later"]} winner="Trainspotting"/>
+      <Home pair={["Trainspotting", "28 Days Later"]} winner="Trainspotting"/>
     );
     expect(scryRenderedDOMComponentsWithTag(component, 'button').length).to.equal(0);
     const winner = ReactDom.findDOMNode(component.refs.winner);
@@ -60,16 +60,16 @@ describe.skip("Voting", () => {
    */
   describe("With shallow rendering", () => {
     it('renders the winner', () => {
-      const voting = shallow(<Voting pair={["Trainspotting", "28 Days Later"]} winner="Trainspotting"/>);
-      expect(voting.containsAllMatchingElements(
+      const home = shallow(<Home pair={["Trainspotting", "28 Days Later"]} winner="Trainspotting"/>);
+      expect(home.containsAllMatchingElements(
         [
           <Winner/>
       ])).to.equal(true);
     })
 
     it('renders the vote', () => {
-      const voting = shallow(<Voting pair={["Trainspotting", "28 Days Later"]}/>);
-      expect(voting.containsAllMatchingElements(
+      const home = shallow(<Home pair={["Trainspotting", "28 Days Later"]}/>);
+      expect(home.containsAllMatchingElements(
         [
           <Vote/>
       ])).to.equal(true);

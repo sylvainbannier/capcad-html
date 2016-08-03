@@ -7,12 +7,12 @@ import AddIdea from './AddIdea';
 import EventList from './EventList';
 import * as actionCreators from '../action_creators';
 
-const Voting = React.createClass({
+const Home = React.createClass({
   mixins: [PureRenderMixin],
 	render() {
     // var { winner, ...other } = this.props;
 		return (
-      <div className="voting">
+      <div className="home">
         <AddIdea addIdea={()=>{}}/>
         <EventList/>
         {
@@ -33,6 +33,6 @@ function mapStateToProps(state) {
   }
 }
 
-export const VotingContainer = connect(mapStateToProps, actionCreators )( Voting)
+export const HomeContainer = connect(mapStateToProps, actionCreators )( Home)
 
-export default Voting;
+export default Home;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Router,Route,hashHistory} from 'react-router';
-import {VotingContainer} from './components/Voting';
+import {HomeContainer} from './components/Home';
 import {ResultsContainer} from './components/Results';
 import App from './components/App';
 import {createStore, applyMiddleware} from 'redux';
@@ -33,7 +33,7 @@ else {
 
 const routes = <Route component={App}>
   <Route path="/results" component={ResultsContainer}/>
-  <Route path="/" component={VotingContainer}/>
+  <Route path="/" component={HomeContainer}/>
 </Route>
 
 ReactDom.render(
