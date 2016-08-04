@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import {Router,Route,hashHistory} from 'react-router';
 import {HomeContainer} from './components/Home';
 import {ResultsContainer} from './components/Results';
+import AddIdea from './components/AddIdea';
 import App from './components/App';
 import {createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
@@ -32,6 +33,7 @@ else {
 // );
 
 const routes = <Route component={App}>
+  <Route path="/addidea" component={AddIdea}/>
   <Route path="/results" component={ResultsContainer}/>
   <Route path="/" component={HomeContainer}/>
 </Route>
