@@ -1,3 +1,5 @@
+import {generate} from 'shortid';
+
 export function setState(state) {
   return {
     type: 'SET_STATE',
@@ -23,6 +25,7 @@ export function next(entry) {
 export function addIdea(entry) {
   return {
     type: 'ADD_IDEA',
-    entry
+    entry,
+    id: generate()
   }
 }

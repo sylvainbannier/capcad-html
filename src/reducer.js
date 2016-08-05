@@ -1,5 +1,4 @@
 import {Map, List} from 'immutable';
-import {generate} from 'shortid';
 
 function setState(state, newState) {
   return state.merge(newState);
@@ -31,16 +30,9 @@ function resetVote(state) {
   }
 }
 
-const getAddIdea = (randomIdGenerator) => (state, entry) => {
-  console.log(state.toJS());
-  const newState = state.updateIn( [ 'events' ] , arr => arr.push(
-    Map({
-    type: 'ADD_IDEA',
-    entry: entry,
-    id: randomIdGenerator()
-  })));
-  return newState;
-}
+const addIdea = (state = Map({events:List()}), action) => state.updateIn( [ 'events' ] , arr => arr.push(
+  Map(action)
+));
 
 function reducer(state = Map(), action) {
   switch (action.type) {
@@ -49,25 +41,9 @@ function reducer(state = Map(), action) {
   case 'VOTE':
     return vote(state, action.entry);
   case 'ADD_IDEA':
-    return getAddIdea(generate)(initState(state), action.entry);
+    return addIdea(initState(state), action);
   }
-  throw new Error("UNKNOWN_ACTION")
   return state;
 }
 
-const getReducer = (randomIdGenerator) => {
-  return function reducer(state = Map(), action) {
-    switch (action.type) {
-    case 'SET_STATE':
-      return resetVote(setState(state, action.state));
-    case 'VOTE':
-      return vote(state, action.entry);
-    case 'ADD_IDEA':
-      return getAddIdea(randomIdGenerator)(initState(state), action.entry);
-    }
-    // throw new Error("UNKNOWN_ACTION")
-    return state;
-  }
-}
-export {getReducer};
-export default getReducer(generate)
+export default reducer
