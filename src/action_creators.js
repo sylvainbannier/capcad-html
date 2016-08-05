@@ -22,10 +22,14 @@ export function next(entry) {
   }
 }
 
-export function addIdea(entry) {
+export const addIdeaFactory = randomIdGenerator => entry =>
+{
   return {
     type: 'ADD_IDEA',
     entry,
-    id: generate()
+    id: randomIdGenerator()
   }
 }
+
+
+export const addIdea = addIdeaFactory(generate)
