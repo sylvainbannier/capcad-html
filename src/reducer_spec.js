@@ -1,7 +1,7 @@
 import { List, Map, fromJS } from 'immutable';
 import {expect} from 'chai';
-import reducer from '../src/reducer';
-import {INITIAL_STATE} from '../src/reducer';
+import reducer from './reducer';
+import {INITIAL_STATE} from './reducer';
 
 describe("reduce", () => {
   describe("ADD_IDEA", () => {

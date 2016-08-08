@@ -1,6 +1,6 @@
 import { List, Map, fromJS } from 'immutable';
 import {expect} from 'chai';
-import {addIdeaFactory} from '../src/action_creators';
+import {addIdeaFactory} from './action_creators';
 import sinon from 'sinon';
 
 describe("action", () => {

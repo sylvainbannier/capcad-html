@@ -6,7 +6,7 @@ import {
   Simulate
 } from 'react-addons-test-utils';
 import {List, Map} from 'immutable';
-import {AddIdea} from '../../src/components/AddIdea';
+import {AddIdea} from './AddIdea';
 import {expect} from 'chai';
 import sinon from 'sinon';
 

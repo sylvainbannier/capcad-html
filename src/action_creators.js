@@ -4,7 +4,7 @@ import {browserHistory} from 'react-router';
 export const addIdeaFactory = (randomIdGenerator, browserHistory) => entry =>
 {
   const newIdeaId = randomIdGenerator();
-  browserHistory.push(`/idea/{id}`);
+  browserHistory.push('#/idea/' + newIdeaId);
   return {
     type: 'ADD_IDEA',
     entry,

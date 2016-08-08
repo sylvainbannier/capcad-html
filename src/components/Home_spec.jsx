@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {renderIntoDocument,scryRenderedDOMComponentsWithTag,Simulate} from 'react-addons-test-utils';
-import Home from '../../src/components/Home';
+import Home from './Home';
 import {expect} from 'chai';
 import { shallow, mount } from 'enzyme';
 import {Link} from 'react-router';
