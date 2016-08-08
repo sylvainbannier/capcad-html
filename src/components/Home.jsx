@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import Winner from './Winner';
-import Vote from './Vote';
 import AddIdea from './AddIdea';
 import EventList from './EventList';
 import * as actionCreators from '../action_creators';
@@ -11,17 +9,11 @@ import * as actionCreators from '../action_creators';
 const Home = React.createClass({
   mixins: [PureRenderMixin],
 	render() {
-    // var { winner, ...other } = this.props;
 		return (
       <div className="home">
-      <Link to="/addidea">addIdea</Link>
+        <Link to="/addidea">addIdea</Link>
         <EventList/>
-        {
-          this.props.winner?
-          <Winner ref="winner" winner={this.props.winner}/>:
-          <Vote {...this.props}/>
-        }
-        </div>
+      </div>
 		);
 	}
 });
