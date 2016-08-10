@@ -20,5 +20,5 @@ describe('AddIdea', () => {
   });
 
   it("has focus when when props.focus is set");
-  it("is cleared when the submit button is clicked");
+  it("is cleared when the submit button is clicked"); // not sure about that => rename scenario
 });

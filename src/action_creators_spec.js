@@ -25,6 +25,7 @@ describe("action", () => {
     it('changes URL to /idea/random_id', ()=> {
       const action = addIdeaFactory(mock.randomIdGenerator, mock.browserHistory)("text");
       expect(mock.browserHistory.push.called).to.be.ok
+      expect(mock.browserHistory.push.calledWith('/idea/random_id')).to.be.ok
     });
   });
 });

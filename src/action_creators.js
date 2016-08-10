@@ -1,10 +1,10 @@
 import {generate} from 'shortid';
-import {browserHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 
-export const addIdeaFactory = (randomIdGenerator, browserHistory) => entry =>
+export const addIdeaFactory = (randomIdGenerator, history) => entry =>
 {
   const newIdeaId = randomIdGenerator();
-  browserHistory.push('#/idea/' + newIdeaId);
+  history.push('/idea/' + newIdeaId);
   return {
     type: 'ADD_IDEA',
     entry,
@@ -13,4 +13,4 @@ export const addIdeaFactory = (randomIdGenerator, browserHistory) => entry =>
 }
 
 
-export const addIdea = addIdeaFactory(generate, browserHistory);
+export const addIdea = addIdeaFactory(generate, hashHistory);
