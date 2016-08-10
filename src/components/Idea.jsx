@@ -5,10 +5,16 @@ import * as actionCreators from '../action_creators';
 const Idea = React.createClass({
 	render() {
 		return (
-      <div className="Idea">IDEA</div>
+      <div className="Idea">
+        {this.props.idea}
+      </div>
 		);
 	}
 });
+
+Idea.propTypes = {
+  name:PropTypes.string.isRequired
+}
 
 function mapStateToProps(state) {
   return { }

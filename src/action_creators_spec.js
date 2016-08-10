@@ -2,6 +2,7 @@ import { List, Map, fromJS } from 'immutable';
 import {expect} from 'chai';
 import {addIdeaFactory} from './action_creators';
 import sinon from 'sinon';
+import {ADD_IDEA} from './action_creators';
 
 describe("action", () => {
   describe("addIdea", () => {
@@ -16,7 +17,7 @@ describe("action", () => {
     it('saves added idea event to history', () => {
       const action = addIdeaFactory(mock.randomIdGenerator,mock.browserHistory)("text");
       expect(action).to.eql({
-        type:"ADD_IDEA",
+        type:ADD_IDEA,
         entry: "text",
         id: "random_id"
       })
