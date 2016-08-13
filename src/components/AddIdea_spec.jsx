@@ -19,6 +19,14 @@ describe('AddIdea', () => {
     expect(addIdeaSpy.called).to.equal(true);
   });
 
-  it("has focus when when props.focus is set");
+  it("has focus when when props.focus is set" ); //unable to test it without a real DOM
+
+  it("handle submit on enter key", () => {
+    let addIdeaSpy = sinon.spy();
+    const component = renderIntoDocument(<AddIdea addIdea={addIdeaSpy}/>);
+    Simulate.keyPress(ReactDOM.findDOMNode(component.refs.addIdeaInput),{key:"Enter"});
+    expect(addIdeaSpy.called).to.equal(true);
+  });
+
   it("is cleared when the submit button is clicked"); // not sure about that => rename scenario
 });

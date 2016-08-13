@@ -11,11 +11,14 @@ const AddIdea = React.createClass({
       input:""
     };
   },
+  componentDidMount: function(){
+    this.refs.addIdeaInput.focus();
+  },
 
 	render() {
 		return (
       <div className="AddIdea">
-        <input type="text" value={this.state.input} onChange={(event) => this.setState({input:event.target.value})}/>
+      <input ref="addIdeaInput" type="text" value={this.state.input} onChange={(event) => this.setState({input:event.target.value})} onKeyPress={ (e) => {if (e.key == "Enter") this.submit(); } }/>
         <button onClick={this.submit} ref="addIdea">OK</button>
       </div>
 		);

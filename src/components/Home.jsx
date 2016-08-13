@@ -11,7 +11,7 @@ const Home = React.createClass({
 	render() {
 		return (
       <div className="home">
-        <Link to="/addidea">addIdea</Link>
+        <Link to="/idea">new idea</Link>
         <EventList/>
       </div>
 		);

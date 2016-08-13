@@ -9,6 +9,6 @@ import {Link} from 'react-router';
 describe("Home", () => {
   it('Displays the add idea button', () => {
     const home = shallow(<Home/>);
-    expect(home.containsAllMatchingElements( [ <Link to="/addidea">addIdea</Link> ])).to.equal(true);
+    expect(home.containsAllMatchingElements( [ <Link to="/idea">new idea</Link> ])).to.equal(true);
   })
 });
