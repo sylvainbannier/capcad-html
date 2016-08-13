@@ -2,7 +2,7 @@ import { List, Map, fromJS } from 'immutable';
 import {expect} from 'chai';
 import {addIdeaFactory} from './action_creators';
 import sinon from 'sinon';
-import {ADD_IDEA} from './action_creators';
+import {ADD_IDEA} from './actions';
 
 describe("action", () => {
   describe("addIdea", () => {
@@ -19,7 +19,8 @@ describe("action", () => {
       expect(action).to.eql({
         type:ADD_IDEA,
         entry: "text",
-        id: "random_id"
+        id: "random_id",
+        eventId: "random_id"
       })
     });
 

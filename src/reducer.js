@@ -1,10 +1,6 @@
 import {Map, List, fromJS} from 'immutable';
-import {ADD_IDEA} from './action_creators';
-
-const INITIAL_STATE = Map({
-  events: List(),
-  ideaList: List()
-});
+import {ADD_IDEA} from './actions';
+import {INITIAL_STATE} from './store';
 
 const addIdea = (state = INITIAL_STATE, action) => state.updateIn( [ 'events' ] , arr => arr.push(
   Map(action)
@@ -13,7 +9,10 @@ const addIdea = (state = INITIAL_STATE, action) => state.updateIn( [ 'events' ] 
 const updateIdeaList = (state = INITIAL_STATE) =>
 state.get('events')
 .filter((e) => (e.get('type') == ADD_IDEA))
-.reduce((prev,current) => prev.updateIn( ['ideaList'], arr => arr.push(current.get('entry'))), state);
+.reduce((prev,current) => prev.updateIn( ['ideaList'], arr => arr.push(Map({
+  id:current.get('id'),
+  entry:current.get('entry')
+}))), state);
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -22,7 +21,5 @@ function reducer(state = INITIAL_STATE, action) {
   }
   return state;
 }
-
-export {INITIAL_STATE, updateIdeaList};
 
 export default reducer
