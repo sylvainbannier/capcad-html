@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {Router,Route,hashHistory} from 'react-router';
-import {HomeContainer} from './components/Home';
-import AddIdea from './components/AddIdea';
-import Idea from './components/Idea';
+import {Router,hashHistory} from 'react-router';
 import App from './components/App';
 import {createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 import io from 'socket.io-client';
+import routes from './routes';
 // import remoteActionMiddleware from './remote_actions_middelware';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
@@ -22,12 +20,6 @@ else {
   // store = createStoreWithMiddleware(reducer);
   store = createStore(reducer);
 }
-
-const routes = <Route component={App}>
-  <Route path="/idea/:id" component={Idea}/>
-  <Route path="/addidea" component={AddIdea}/>
-  <Route path="/" component={HomeContainer}/>
-</Route>
 
 ReactDom.render(
   <Provider store={store}>
