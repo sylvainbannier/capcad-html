@@ -19,7 +19,7 @@ describe('AddIdea', () => {
     expect(addIdeaSpy.called).to.equal(true);
   });
 
-  it("has focus when when props.focus is set" ); //unable to test it without a real DOM
+  it("NOT TESTABLE : has focus when when props.focus is set" ); //unable to test it without a real DOM
 
   it("handle submit on enter key", () => {
     let addIdeaSpy = sinon.spy();

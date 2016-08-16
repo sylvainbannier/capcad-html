@@ -18,13 +18,6 @@ describe("reduce", () => {
       expect(nextState.get('events')).to.equal(expectedStateEvents);
     });
 
-    /*
-     * should I really add to idea List ? ou should à build idea list when needed as there might be updates from server (with performances issues ?)
-     * Solutions :
-     * - build idea list with corresponding initial synced action as starting point always keep last synced list though which can only be sent by server
-     * - regenerate this list on each event update ?
-     * is it premature optimisation ?
-     */
     it('adds idea to the idea list', () => {
       const expectedStateIdeaList = INITIAL_STATE.updateIn(['ideaList'], arr => arr.push(Map({
         entry: "my new idea",

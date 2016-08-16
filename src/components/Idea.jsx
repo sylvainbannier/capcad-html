@@ -6,7 +6,7 @@ const Idea = React.createClass({
 	render() {
 		return (
       <div className="Idea">
-        {this.props.idea.entry}
+        <h1> {this.props.idea.entry} </h1>
       </div>
 		);
 	}
