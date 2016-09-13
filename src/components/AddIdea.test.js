@@ -14,7 +14,7 @@ describe('AddIdea', () => {
 
   it('invokes the callback when submit button is clicked', () => {
     let addIdeaSpy = sinon.spy();
-    const component = renderIntoDocument(<AddIdea addIdea={addIdeaSpy}/>);
+    const component = renderIntoDocument(<AddIdea handleSubmit={addIdeaSpy}/>);
     Simulate.click(ReactDOM.findDOMNode(component.refs.addIdea));
     expect(addIdeaSpy.called).to.equal(true);
   });
@@ -23,7 +23,7 @@ describe('AddIdea', () => {
 
   it("handle submit on enter key", () => {
     let addIdeaSpy = sinon.spy();
-    const component = renderIntoDocument(<AddIdea addIdea={addIdeaSpy}/>);
+    const component = renderIntoDocument(<AddIdea handleSubmit={addIdeaSpy}/>);
     Simulate.keyPress(ReactDOM.findDOMNode(component.refs.addIdeaInput),{key:"Enter"});
     expect(addIdeaSpy.called).to.equal(true);
   });

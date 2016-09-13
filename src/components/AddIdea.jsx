@@ -3,12 +3,17 @@ import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 
 const AddIdea = React.createClass({
-	submit: function() {
-		return this.props.addIdea(this.state.input);
+  propTypes: {
+    handleSubmit: PropTypes.func.isRequired,
+    placeHolder: PropTypes.string,
+    initialValue: PropTypes.string
+  },
+	handleSubmit: function() {
+		return this.props.handleSubmit(this.state.input);
 	},
   getInitialState: function() {
     return {
-      input:""
+      input:this.props.initialValue || ''
     };
   },
   componentDidMount: function(){
@@ -16,10 +21,13 @@ const AddIdea = React.createClass({
   },
 
 	render() {
+    const updateInput = (e) => this.setState({input:e.target.value})
+    const handleEnter = (e) => {if (e.key == "Enter") this.handleSubmit(); }
+
 		return (
       <div className="AddIdea">
-      <input ref="addIdeaInput" type="text" value={this.state.input} onChange={(event) => this.setState({input:event.target.value})} onKeyPress={ (e) => {if (e.key == "Enter") this.submit(); } }/>
-        <button onClick={this.submit} ref="addIdea">OK</button>
+      <input ref="addIdeaInput" type="text" value={this.state.input} onChange={updateInput} onKeyPress={handleEnter} placeholder={this.props.placeHolder}/>
+        <button onClick={this.handleSubmit} ref="addIdea">OK</button>
       </div>
 		);
 	}
