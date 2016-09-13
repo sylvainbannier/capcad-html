@@ -2,7 +2,7 @@
   "name": "capcad-html",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://capcad.github.io/capcad-html",
+  "homepage": "http://beta.captaincadeau.fr",
   "devDependencies": {
     "enzyme": "^2.4.1",
     "react-addons-test-utils": "^15.3.1",
