@@ -27,6 +27,4 @@ describe('AddIdea', () => {
     Simulate.keyPress(ReactDOM.findDOMNode(component.refs.addIdeaInput),{key:"Enter"});
     expect(addIdeaSpy.called).to.equal(true);
   });
-
-  it("is cleared when the submit button is clicked"); // not sure about that => rename scenario
 });
