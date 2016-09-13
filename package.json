@@ -4,11 +4,13 @@
   "private": true,
   "homepage": "http://beta.captaincadeau.fr",
   "devDependencies": {
+    "@kadira/storybook": "^2.5.2",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.6.0",
     "enzyme": "^2.4.1",
     "react-addons-test-utils": "^15.3.1",
     "react-scripts": "0.4.1",
-    "sinon": "^1.17.5",
-    "@kadira/storybook": "^2.5.2"
+    "sinon": "^1.17.5"
   },
   "dependencies": {
     "immutable": "^3.8.1",
