@@ -1,18 +1,24 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
+import {EventListItem} from './EventListItem.js';
 
-const EventList = React.createClass({
-	render() {
-    const events = this.props.events;
-    const eventsCmp = events?events.map(props => <div>{props.entry}</div>):"";
-		return (
-      <div className="EventList">
-        {eventsCmp}
-      </div>
-		);
-	}
-});
+const EventList = ( {
+  events=[],
+  handleLoadNextEvents,
+  handleLoadPreviousEvents
+}) =>
+<div className="EventList">
+  <button onClick={handleLoadNextEvents} >next events</button>
+  {events.map((event, key) => <EventListItem key={key} event={event}/>)}
+  {handleLoadPreviousEvents && <button onClick={handleLoadPreviousEvents} >Previous events</button>}
+</div>
+
+EventList.propTypes = {
+  events: PropTypes.array,
+  handleLoadNextEvents: PropTypes.func,
+  handleLoadPreviousEvents: PropTypes.func,
+}
 
 function mapStateToProps(state) {
   return {
