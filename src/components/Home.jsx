@@ -1,8 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import AddIdea from './AddIdea';
-import EventList from './EventList';
 import * as actionCreators from '../action_creators';
 
 const Home = React.createClass({
@@ -10,7 +8,6 @@ const Home = React.createClass({
 		return (
       <div className="home">
         <Link to="/idea">new idea</Link>
-        <EventList/>
       </div>
 		);
 	}

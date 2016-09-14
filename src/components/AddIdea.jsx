@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
-import * as actionCreators from '../action_creators';
+import {addIdea} from '../action_creators.js';
 
 const AddIdea = React.createClass({
   propTypes: {
@@ -22,7 +22,7 @@ const AddIdea = React.createClass({
 
 	render() {
     const updateInput = (e) => this.setState({input:e.target.value})
-    const handleEnter = (e) => {if (e.key == "Enter") this.handleSubmit(); }
+    const handleEnter = (e) => {if (e.key === "Enter") this.handleSubmit(); }
 
 		return (
       <div className="AddIdea">
@@ -35,6 +35,9 @@ const AddIdea = React.createClass({
 
 function mapStateToProps(state) {
   return { }
+}
+const actionCreators = {
+  handleSubmit:addIdea
 }
 
 export {AddIdea};

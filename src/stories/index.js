@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import {AddIdea} from '../components/AddIdea.jsx';
+import {Idea} from '../components/Idea.jsx';
 import {EventListItem} from '../components/EventListItem.js';
 import {EventList} from '../components/EventList.jsx';
 
@@ -30,3 +31,4 @@ storiesOf('Events list', module)
   handleLoadNextEvents={action('loadNextEvents') }
   />)
 ;
+

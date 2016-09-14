@@ -26,6 +26,6 @@ function mapStateToProps(state) {
   }
 }
 
-export {EventList};
+export { EventList };
 export const EventListContainer = connect(mapStateToProps,actionCreators)(EventList);
 export default EventListContainer;

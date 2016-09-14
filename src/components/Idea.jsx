@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 
@@ -19,7 +19,7 @@ Idea.propTypes = {
 function mapStateToProps(state, props) {
   // TODO: tests this (refer to how to test container compoenents)
   return {
-    idea: state.get('ideaList').filter((ideaListItem) => ideaListItem.get('id') == props.params.id).first().toJS()
+    idea: state.get('ideaList').filter((ideaListItem) => ideaListItem.get('id') === props.params.id).first().toJS()
   }
 }
 

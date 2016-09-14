@@ -15,5 +15,4 @@ export const addIdeaFactory = (randomIdGenerator, history) => entry =>
   }
 }
 
-
 export const addIdea = addIdeaFactory(generate, hashHistory);

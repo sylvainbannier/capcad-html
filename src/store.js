@@ -1,4 +1,4 @@
-import {Map, List, fromJS} from 'immutable';
+import {Map, List} from 'immutable';
 
 export const INITIAL_STATE = Map({
   events: List(),
