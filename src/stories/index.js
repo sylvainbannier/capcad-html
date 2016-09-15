@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import {AddIdea} from '../components/AddIdea.jsx';
-import {Idea} from '../components/Idea.jsx';
+import {AddIdea} from '../components/AddIdea.js';
+import {Idea} from '../components/Idea.js';
 import {EventListItem} from '../components/EventListItem.js';
-import {EventList} from '../components/EventList.jsx';
+import {EventList} from '../components/EventList.js';
 
 storiesOf('Add idea input', module)
 .add('with initial value', () => <AddIdea handleSubmit={action('handleSubmit')} initialValue="Initial value" placeHolder="a great idea"/>)

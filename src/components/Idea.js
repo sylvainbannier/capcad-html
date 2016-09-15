@@ -19,7 +19,7 @@ const Idea = React.createClass({
     if (this.props.params) this.props.loadIdea(this.props.params.id);
   },
   componentWillReceiveProps(nextProps) {
-    if (this.props.params.id != nextProps.params.id) this.props.loadIdea(nextProps.params.id);
+    if (this.props.params.id !== nextProps.params.id) this.props.loadIdea(nextProps.params.id);
   },
   render() {
     return (
