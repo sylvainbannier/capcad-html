@@ -37,5 +37,5 @@ const idea = {
   entry: "my idea"
 }
 storiesOf(`Idea`, module)
-.add(`default state`, () => <Idea idea={idea}/>)
+.add(`default state`, () => <Idea idea={idea} loadIdea={action('loadIdea')} params={{id:'id'}}/>)
 ;

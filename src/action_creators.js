@@ -1,6 +1,7 @@
 import {generate} from 'shortid';
 import {hashHistory} from 'react-router';
 import {ADD_IDEA} from './actions';
+import {LOAD_IDEA} from './actions';
 
 export const addIdeaFactory = (randomIdGenerator, history) => entry =>
 {
@@ -12,6 +13,13 @@ export const addIdeaFactory = (randomIdGenerator, history) => entry =>
     entry,
     id,
     eventId
+  }
+}
+
+export const loadIdea = (id) => {
+  return {
+    type: LOAD_IDEA,
+    id
   }
 }
 

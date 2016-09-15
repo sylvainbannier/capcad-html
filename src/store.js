@@ -1,7 +1,7 @@
-import {Map, List} from 'immutable';
+import {fromJS} from 'immutable';
 
-export const INITIAL_STATE = Map({
-  events: List(),
-  ideaList: List()
+export const INITIAL_STATE = fromJS({
+  events: [],
+  ideaList: []
 });
 
