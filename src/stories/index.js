@@ -19,9 +19,10 @@ storiesOf('Events list item', module)
 .add('without locale and now set', () => <EventListItem event={addIdeaEvent}/>)
 ;
 
+const events = [addIdeaEvent,addIdeaEvent];
 storiesOf('Events list', module)
 .add('with events', () => <EventList
-  events={[ addIdeaEvent, addIdeaEvent ]}
+  events={events}
   handleLoadPreviousEvents={action('loadPreviousEvents') }
   handleLoadNextEvents={action('loadNextEvents') }
   />)
@@ -32,3 +33,9 @@ storiesOf('Events list', module)
   />)
 ;
 
+const idea = {
+  entry: "my idea"
+}
+storiesOf(`Idea`, module)
+.add(`default state`, () => <Idea idea={idea}/>)
+;

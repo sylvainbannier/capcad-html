@@ -2,18 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 
-const Idea = React.createClass({
-	render() {
-		return (
-      <div className="Idea">
-        <h1> {this.props.idea.entry} </h1>
-      </div>
-		);
-	}
-});
+const Idea = ({idea: {entry}}) =>
+<div className="Idea">
+  <h1>{entry}</h1>
+</div>
 
 Idea.propTypes = {
-  // name:PropTypes.string.isRequired
+  entry:React.PropTypes.string.isRequired
 }
 
 function mapStateToProps(state, props) {
