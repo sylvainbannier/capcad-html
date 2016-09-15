@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://beta.captaincadeau.fr",
   "devDependencies": {
-    "@kadira/storybook": "^2.5.2",
+    "@kadira/storybook": "^2.14.0",
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
     "enzyme": "^2.4.1",
