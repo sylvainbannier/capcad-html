@@ -15,13 +15,13 @@ state.get('events')
 }))), state);
 
 
-const loadIdea  = (state, {id}) =>
-state.set(
-  'currentIdea',
-  state.get('ideaList')
+const loadIdea  = (state, {id}) => {
+  const currentIdea = state.get('ideaList')
   .filter((ideaListItem) => ideaListItem.get('id') === id)
-  .first()
-);
+  .first();
+  if (currentIdea) return state.set( 'currentIdea', currentIdea);
+  else return state.set( 'currentIdea', Map({error:"unable to find idea"}));
+}
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {

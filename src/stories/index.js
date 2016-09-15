@@ -37,5 +37,7 @@ const idea = {
   entry: "my idea"
 }
 storiesOf(`Idea`, module)
-.add(`default state`, () => <Idea idea={idea} loadIdea={action('loadIdea')} params={{id:'id'}}/>)
+.add(`success`, () => <Idea idea={idea} loading={false} loadIdea={action('loadIdea')} params={{id:'id'}}/>)
+.add(`loading`, () => <Idea idea={idea} loading={true} loadIdea={action('loadIdea')} params={{id:'id'}}/>)
+.add(`error`, () => <Idea idea={idea} error="error message" loadIdea={action('loadIdea')} params={{id:'id'}}/>)
 ;
