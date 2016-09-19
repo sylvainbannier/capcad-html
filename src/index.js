@@ -2,29 +2,40 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Router,hashHistory} from 'react-router';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
-// import io from 'socket.io-client';
 import routes from './routes';
-// import remoteActionMiddleware from './remote_actions_middelware';
+import * as storage from 'redux-storage';
+import createEngine from 'redux-storage-engine-localstorage';
+import merger from 'redux-storage-merger-immutablejs';
 
-// const socket = io(`${location.protocol}//${location.hostname}:8090`);
-// const createStoreWithMiddleware = applyMiddleware(remoteActionMiddleware(socket))(createStore);
+const storableReducer = storage.reducer(reducer, merger);
+const engine = createEngine('my-save-key');
+const middleware = storage.createMiddleware(engine);
 let store;
+
 if (process.env.NODE_ENV !== 'production') {
-  // store = createStoreWithMiddleware(reducer, window.devToolsExtension && window.devToolsExtensio
-  store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
+  store = createStore(storableReducer, compose(
+    applyMiddleware(middleware),
+    window.devToolsExtension ? window.devToolsExtension():(f) => f
+  ));
 }
 else {
-  // store = createStoreWithMiddleware(reducer);
-  store = createStore(reducer);
+  store = applyMiddleware(middleware)(createStore)(storableReducer);
 }
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={ hashHistory }>{routes}</Router>
-  </Provider>,
-  document.getElementById('root')
-)
+const load = storage.createLoader(engine);
+load(store)
+.then((newState) => {
+  console.log('Loaded state:', newState);
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router history={ hashHistory }>{routes}</Router>
+    </Provider>,
+    document.getElementById('root')
+  )
+})
+.catch(() => console.log('Failed to load previous state'));
+
 
