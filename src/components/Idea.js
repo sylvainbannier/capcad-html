@@ -5,7 +5,7 @@ import {loadIdea} from '../action_creators.js';
 
 const Idea = React.createClass({
   propTypes: {
-    idea:React.PropTypes.string.isRequired,
+    idea:React.PropTypes.object.isRequired,
     loadIdea:React.PropTypes.func.isRequired,
     loading:React.PropTypes.bool,
     error:React.PropTypes.string,

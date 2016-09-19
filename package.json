@@ -20,6 +20,9 @@
     "react-router": "^2.6.0",
     "redux": "^3.5.2",
     "redux-router": "^2.1.2",
+    "redux-storage": "^4.1.1",
+    "redux-storage-engine-localstorage": "^1.1.2",
+    "redux-storage-merger-immutablejs": "^1.0.3",
     "shortid": "dylang/shortid",
     "socket.io-client": "^1.4.8",
     "timeago.js": "^1.1.0"
